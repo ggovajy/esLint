@@ -7,6 +7,8 @@ function Gnb() {
 
   if (router.pathname === "/") {
     activeItem = "home";
+  } else if (router.pathname === "/contact") {
+    activeItem = "contact";
   } else if (router.pathname === "/about") {
     activeItem = "about";
   } else if (router.pathname === "/admin") {
@@ -16,8 +18,12 @@ function Gnb() {
   function goLink(e, data) {
     if (data.name === "home") {
       router.push("/");
+    } else if (data.name === "contact") {
+      router.push("/contact");
     } else if (data.name === "about") {
       router.push("/about");
+    } else if (data.name === "admin") {
+      router.push("/admin");
     }
   }
 
