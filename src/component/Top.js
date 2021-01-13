@@ -4,7 +4,7 @@ import Gnb from "./Gnb"
 function Top() {
     return (
         <div>
-            <Header as="h1"></Header>
+            <Header as="h1">ggova HomePage</Header>
             <Gnb/>
         </div>
     )
