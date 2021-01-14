@@ -7,27 +7,35 @@ function Gnb() {
 
   if (router.pathname === "/") {
     activeItem = "home";
-  } else if (router.pathname === "/contact") {
-    activeItem = "contact";
+  } else if (router.pathname === "/chart") {
+    activeItem = "chart";
   } else if (router.pathname === "/about") {
     activeItem = "about";
   } else if (router.pathname === "/admin") {
     activeItem = "admin";
-  } else if (router.pathname === "/chart") {
-    activeItem = "chart";
+  } else if (router.pathname === "/solomon01") {
+    activeItem = "solomon01";
+  } else if (router.pathname === "/solomon02") {
+    activeItem = "solomon02";
+  } else if (router.pathname === "/solomon03") {
+    activeItem = "solomon03";
   }
 
   function goLink(e, data) {
     if (data.name === "home") {
       router.push("/");
-    } else if (data.name === "contact") {
-      router.push("/contact");
+    } else if (data.name === "chart") {
+      router.push("/chart");
     } else if (data.name === "about") {
       router.push("/about");
     } else if (data.name === "admin") {
       router.push("/admin");
-    } else if (data.name === "chart") {
-      router.push("/chart");
+    } else if (data.name === "solomon01") {
+      router.push("/solomon01/solomon01");
+    } else if (data.name === "solomon02") {
+      router.push("/solomon02/solomon02");
+    } else if (data.name === "solomon03") {
+      router.push("/solomon03/solomon03");
     }
   }
 
@@ -41,9 +49,9 @@ function Gnb() {
       />
       <Menu.Item
         name="Contact Us"
-        active={activeItem === "contact"}
+        active={activeItem === "chart"}
         onClick={() => {
-          router.push("/contact");
+          router.push("/chart");
         }}
       />
       <Menu.Item
@@ -54,10 +62,24 @@ function Gnb() {
         }}
       />
       <Menu.Item
-        name="chart"
-        active={activeItem === "chart"}
+        name="solomon01"
+        active={activeItem === "solomon01"}
         onClick={() => {
-          router.push("/chart");
+          router.push("/solomon01/solomon01");
+        }}
+      />
+      <Menu.Item
+        name="solomon02"
+        active={activeItem === "solomon02"}
+        onClick={() => {
+          router.push("/solomon02/solomon02");
+        }}
+      />
+      <Menu.Item
+        name="solomon03"
+        active={activeItem === "solomon03"}
+        onClick={() => {
+          router.push("/solomon03/solomon03");
         }}
       />
     </Menu>
