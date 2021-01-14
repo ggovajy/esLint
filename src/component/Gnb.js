@@ -13,6 +13,8 @@ function Gnb() {
     activeItem = "about";
   } else if (router.pathname === "/admin") {
     activeItem = "admin";
+  } else if (router.pathname === "/chart") {
+    activeItem = "chart";
   }
 
   function goLink(e, data) {
@@ -24,6 +26,8 @@ function Gnb() {
       router.push("/about");
     } else if (data.name === "admin") {
       router.push("/admin");
+    } else if (data.name === "chart") {
+      router.push("/chart");
     }
   }
 
@@ -47,6 +51,13 @@ function Gnb() {
         active={activeItem === "admin"}
         onClick={() => {
           router.push("/admin");
+        }}
+      />
+      <Menu.Item
+        name="chart"
+        active={activeItem === "chart"}
+        onClick={() => {
+          router.push("/chart");
         }}
       />
     </Menu>
