@@ -4,7 +4,7 @@ export default class solomon01 extends Component {
     render() {
         return (
             <div>
-                solomon01asdasd
+                solomon01asdasdasd
             </div>
         )
     }
