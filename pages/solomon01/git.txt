@@ -1,0 +1,31 @@
+git 
+//깃 초기화 현재 폴더를 깃에 올릴 루트폴더로 정함
+git init
+//최초 커밋시 redme.md 파일이 같이 있어야 커밋이 가능해짐
+git add readme.md
+//소스 수정 후 올릴 파일들을 깃의 stage에 올린다
+git add (올릴 파일경로/파일이름)
+//현재 깃이 어떤 깃허브 url과 연결되어 있는지 확인한다
+git remote -v 
+//깃주소를 새로 추가한다
+git remote add "(git 주소)"
+//여러개의 branch가 있을경우 pull이나 push를 할 주소를 설정한다
+git remote branch "(사용할 깃 주소)"
+//사용 안하는 git 주소의경우 삭제
+git remote remove "(사용안할 git 주소)"
+//스테이지에 올라가있는 소스가 git에 올라갈때 메시지를 설정한다
+git commit -m "(커밋메시지)"
+//스테이지에 올려져있는 소스를 실제 git 주소에 올린다
+git push
+//git에 있는 수정된 소스파일을 로컬주소로 내려받는다
+git pull
+//git 에 올라가 있는 소스를 로컬로 내려받는다(처음 받을떄)
+git clone "(깃 주소)"
+//버전관리를 위해 현재 로컬 소스를 새로운 버전으로 저장한다(로컬 소스와 깃주소가 출돌된경우 해결방법)
+..stash 관련 너무 다양한기능이있는데 정리못함
+git stash
+//현재로컬에 작업중인 소스를 커밋받은 버전으로 되돌린다
+git reset
+//깃 커밋할 사용자 이름 설정
+git -config user.name "깃허브 사용자이름"
+git -config user.email "깃허브 사용자 이메일"
