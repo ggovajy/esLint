@@ -19,6 +19,8 @@ function Gnb() {
     activeItem = "solomon02";
   } else if (router.pathname === "/solomon03") {
     activeItem = "solomon03";
+  } else if (router.pathname === "/solomon04") {
+    activeItem = "solomon04";
   }
 
   function goLink(e, data) {
@@ -36,6 +38,8 @@ function Gnb() {
       router.push("/solomon02/solomon02");
     } else if (data.name === "solomon03") {
       router.push("/solomon03/solomon03");
+    } else if (data.name === "solomon04") {
+      router.push("/solomon04/solomon04");
     }
   }
 
@@ -80,6 +84,13 @@ function Gnb() {
         active={activeItem === "solomon03"}
         onClick={() => {
           router.push("/solomon03/solomon03");
+        }}
+      />
+      <Menu.Item
+        name="solomon04"
+        active={activeItem === "solomon04"}
+        onClick={() => {
+          router.push("/solomon04/solomon04");
         }}
       />
     </Menu>
