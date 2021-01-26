@@ -12,6 +12,7 @@ export default class solomon03 extends Component {
   state={
     input:'',
     todos:[
+      // service 통한 axios 연결로 data bind 필뇨
       {id:0 ,text:'리액트 소개', checked:false},
       {id:1 ,text:'리액트 소개', checked:true},
       {id:2 ,text:'리액트 소개', checked:false},
