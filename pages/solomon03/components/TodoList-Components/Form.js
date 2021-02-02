@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import styles from '../components/Form.module.css'
+import styles from './Form.module.css';
 const Form = ({ value, onChange, onCreate, onKeyPress, color })=>{
     return(
         <div className={`${styles.form}`}>

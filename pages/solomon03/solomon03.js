@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import TodoListTemplate from './components/TodoListTemplate';
-import Form from './components/Form';
-import TodoItemList from './components/TodoItemList';
-import Palette from './components/Palette';
-
+import TodoListTemplate from './components/TodoList-Components/TodoListTemplate';
+import Form from './components/TodoList-Components/Form';
+import TodoItemList from './components/TodoList-Components/TodoItemList';
+import Palette from './components/TodoList-Components/Palette';
+import NavBar from './components/common-Components/NavBar';
+import Clock from './components/common-Components/Clock';
+// import styles from './solomon03.module.css'
 
 const colors = ['#343a40', '#f03e3e', '#12b886', '#228ae6', '#fcba03'];
 
@@ -87,20 +89,31 @@ export default class solomon03 extends Component {
           handleSelectColor
         }=this;
         return (
-          <TodoListTemplate form={(
-            <Form
-              value={input}
-              onKeyPress = {handleKeyPress}
-              onChange = {handleChange}
-              onCreate = {handleCreate}
-              color = {color}
-            />
-          )}
-          palette={(
-            <Palette colors={colors} selected={color} onSelect={handleSelectColor}/>
-          )}>
-            <TodoItemList todos={todos} onToggle={handleToggle} onRemove={handleRemove}/>
-          </TodoListTemplate>
+          // <div class={`${styles.container}`}>
+          <div>
+              <div className='navContainer'>
+                <NavBar/>
+              </div>
+              <div>
+                <Clock/>
+              </div>
+              <div className='todoListContainer'>
+                <TodoListTemplate form={(
+                  <Form
+                    value={input}
+                    onKeyPress = {handleKeyPress}
+                    onChange = {handleChange}
+                    onCreate = {handleCreate}
+                    color = {color}
+                  />
+                )}
+                palette={(
+                  <Palette colors={colors} selected={color} onSelect={handleSelectColor}/>
+                )}>
+                  <TodoItemList todos={todos} onToggle={handleToggle} onRemove={handleRemove}/>
+                </TodoListTemplate>
+              </div>
+          </div>
         );
       }
 }
