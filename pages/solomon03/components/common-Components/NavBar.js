@@ -1,19 +1,16 @@
 import React, {Component} from 'react';
 
-class navBar extends Component{
+class NavBar extends Component{
 
     render(){
         return(
             <div>
-                    <div>
-                        <h2>Side Menu</h2>
-                    </div>
-                    <div>Todo-List</div>
-                    <div>ManageBook</div>
-                
+                <div>tab01</div>
+                <div>tab02</div>
+                <div>tab03</div>
             </div>
         );
     }
 }
 
-export default navBar;
+export default NavBar;
