@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import Ball from '../src/component/Ball'
+import StsGnb from '../src/component/stsGnb'
 
 function getWinNumbers() {
   console.log('getWinNumbers');
@@ -56,6 +57,7 @@ const Lotto = () => {
 
   return (
     <>
+      <StsGnb></StsGnb>
       <div>당첨 숫자</div>
       <div id="결과창">
         {winBalls.map((v) => <Ball key={v} number={v} />)}

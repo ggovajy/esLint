@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import { Menu } from "semantic-ui-react";
+import SideNavBar from './sideNavBar'
+import TestNavBar from './testNavBar'
 
 function stsGnb() {
   const router = useRouter();
@@ -14,10 +16,11 @@ function stsGnb() {
   }
 
   return (
-    <Menu inverted>
-      <Menu.Item name="solomon04" onClick={goLink} />
-      <Menu.Item name="solomon04Search" onClick={goLink} />
-    </Menu>
+    <>
+      <SideNavBar></SideNavBar>
+      <TestNavBar></TestNavBar>
+
+    </>
   );
 }
 export default stsGnb;

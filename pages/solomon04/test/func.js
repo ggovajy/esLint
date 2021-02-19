@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState, useRef, useCallback } from "react"
 import Try from '../src/component/Try'
+import StsGnb from '../src/component/stsGnb'
 
 const getNumbers = () => {
     const candidates = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -74,6 +75,7 @@ const getNumbers = () => {
   
     return (
       <>
+        <StsGnb></StsGnb>
         <h1>숫자야구</h1>
         <spqn style={{ color: 'white'}}>{answer}</spqn>
         <h1>{result}</h1>
