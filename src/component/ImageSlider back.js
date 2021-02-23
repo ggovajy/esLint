@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-// import { Carousel } from 'react-flexible-carousel'
+import React, { Component } from 'react';
+import { Carousel } from 'react-flexible-carousel';
 
 class ImageSliderback extends Component {
   constructor(props) {
@@ -11,21 +11,17 @@ class ImageSliderback extends Component {
         'http://images.freeimages.com/images/previews/423/burger-1320282.jpg',
         'http://images.freeimages.com/images/previews/f44/strawberry-cake-2-1323179.jpg',
         'http://images.freeimages.com/images/previews/5b0/rubik-s-cube-1-1424892.jpg',
-      ]
-    }
+      ],
+    };
   }
 
   render() {
     return (
       <div style={{ width: 300, margin: '0 auto' }}>
         <h1 style={{ textAlign: 'center' }}>Simple Example</h1>
-        <Carousel
-          urls={ this.state.urls }
-          use_thumbs={ true }
-          listHeight={ 200 }
-        />
+        <Carousel urls={this.state.urls} use_thumbs listHeight={200} />
         <pre>
-        {`
+          {`
           <Carousel
             urls={ this.state.urls }
             use_thumbs={ true }
@@ -34,8 +30,8 @@ class ImageSliderback extends Component {
         `}
         </pre>
       </div>
-    )
+    );
   }
 }
 
-export default ImageSliderback
+export default ImageSliderback;

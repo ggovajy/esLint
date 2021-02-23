@@ -1,38 +1,31 @@
-const SETSESSION ="session/SETSSEION";
+const SETSESSION = 'session/SETSSEION';
 
-export const setSession=(session)=>({
-    type:SETSESSION,
-    payload:session
+export const setSession = (session) => ({
+  type: SETSESSION,
+  payload: session,
+});
 
-})
+const initState = {
+  session: {
+    id: 'unknown',
+    res: false,
+  },
+};
 
-
-const initState={
-   session:{
-       id:"unknown",
-       res:false
-   }
-}
-
-
-function sessionReducer(state=initState,action){
-
-    switch(action.type){
-        case SETSESSION:
-            {
-                state= {
-                    ...state,
-                    session:action.payload
-                }
-                return state;
-            }
-
-        default:
-            {
-                return state
-            }
+function sessionReducer(state = initState, action) {
+  switch (action.type) {
+    case SETSESSION: {
+      state = {
+        ...state,
+        session: action.payload,
+      };
+      return state;
     }
 
+    default: {
+      return state;
+    }
+  }
 }
 
-export default sessionReducer
+export default sessionReducer;

@@ -1,9 +1,5 @@
 function Footer() {
-    return (
-        <div>
-            CoptRight @ggova . All rigths reserved.
-        </div>
-    )
+  return <div>CoptRight @ggova . All rigths reserved.</div>;
 }
 
-export default Footer
+export default Footer;

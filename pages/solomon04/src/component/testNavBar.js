@@ -1,28 +1,26 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 const useStyles = makeStyles(() =>
   createStyles({
     formControl: {
       minWidth: 120,
     },
-    selectEmpty: {
-      
-    },
+    selectEmpty: {},
   }),
 );
 
 const leftMenu = [
-                  {title:"solomon4_1", path:"/solomon04/test/func"},
-                  {title:"solomon4_2", path:"/solomon04/test/ChooseType"},
-                  {title:"solomon4_Map", path:"/solomon04/test/mapTest"},
-                  {title:"solomon4_4", path:"/solomon04/test/func"},
-]
+  { title: 'solomon4_1', path: '/solomon04/test/func' },
+  { title: 'solomon4_2', path: '/solomon04/test/ChooseType' },
+  { title: 'solomon4_Map', path: '/solomon04/test/mapTest' },
+  { title: 'solomon4_4', path: '/solomon04/test/SearchPlace' },
+];
 
 const NativeSelects = () => {
   const classes = useStyles();
@@ -31,15 +29,12 @@ const NativeSelects = () => {
   const [name, setName] = useState([]);
 
   const handleChange = (event) => {
-
     setMenu(event.target.value);
-    console.log("ggova name ===="+ name);
-    console.log("ggova navName ===="+ menu);
+    console.log('ggova name ====' + name);
+    console.log('ggova navName ====' + menu);
 
     router.push(event.target.value);
   };
-
-
 
   return (
     <div>
@@ -64,6 +59,6 @@ const NativeSelects = () => {
       </FormControl>
     </div>
   );
-}
+};
 
-export default NativeSelects; 
+export default NativeSelects;

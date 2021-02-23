@@ -1,22 +1,16 @@
 export default function SearchBox() {
-
-  function searchFunc() {
-
-  }
+  function searchFunc() {}
   return (
     <>
       <div className="search-box">
-        <button className="search-button">
-        </button>
+        <button className="search-button" />
         <input
           id="search"
           type="text"
           name="search"
           placeholder="Search goods"
         />
-        <button onClick={searchFunc}>
-          검색
-        </button>
+        <button onClick={searchFunc}>검색</button>
       </div>
       <style jsx>{`
         .search-box {

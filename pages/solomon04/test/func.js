@@ -1,35 +1,36 @@
-import React from 'react'
-import { useEffect, useState, useRef, useCallback } from "react"
-import Try from '../src/component/Try'
-import StsGnb from '../src/component/stsGnb'
+import React from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import Try from '../src/component/Try';
+import StsGnb from '../src/component/stsGnb';
 
 const getNumbers = () => {
-    const candidates = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const array = [];
-    for (let i = 0; i < 4; i += 1) {
-      const chosen = candidates.splice(Math.floor(Math.random() * (9 - i)), 1)[0];
-      array.push(chosen);
-    }
-    return array;
-  };
-  
-  const NumberBaseball = () => {
-    const [answer, setAnswer] = useState(getNumbers());
-    const [value, setValue] = useState('');
-    const [result, setResult] = useState('');
-    const [tries, setTries] = useState([]);
-    const inputEl = useRef(null);
-  
-    const onSubmitForm = useCallback((e) => {
+  const candidates = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const array = [];
+  for (let i = 0; i < 4; i += 1) {
+    const chosen = candidates.splice(Math.floor(Math.random() * (9 - i)), 1)[0];
+    array.push(chosen);
+  }
+  return array;
+};
+
+const NumberBaseball = () => {
+  const [answer, setAnswer] = useState(getNumbers());
+  const [value, setValue] = useState('');
+  const [result, setResult] = useState('');
+  const [tries, setTries] = useState([]);
+  const inputEl = useRef(null);
+
+  const onSubmitForm = useCallback(
+    (e) => {
       e.preventDefault();
       if (value === answer.join('')) {
-        setTries((t) => ([
+        setTries((t) => [
           ...t,
           {
             try: value,
             result: '홈런!',
-          }
-        ]));
+          },
+        ]);
         setResult('홈런!');
         alert('게임을 다시 실행합니다.');
         setValue('');
@@ -54,48 +55,55 @@ const getNumbers = () => {
               console.log('strike', answerArray[i], answer[i]);
               strike += 1;
             } else if (answer.includes(answerArray[i])) {
-              console.log('ball', answerArray[i], answer.indexOf(answerArray[i]));
+              console.log(
+                'ball',
+                answerArray[i],
+                answer.indexOf(answerArray[i]),
+              );
               ball += 1;
             }
           }
-          setTries(t => ([
+          setTries((t) => [
             ...t,
             {
               try: value,
               result: `${strike} 스트라이크, ${ball} 볼입니다.`,
-            }
-          ]));
+            },
+          ]);
           setValue('');
           inputEl.current.focus();
         }
       }
-    }, [value, answer]);
-  
-    const onChangeInput = useCallback((e) => setValue(e.target.value), []);
-  
-    return (
-      <>
-        <StsGnb></StsGnb>
-        <h1>숫자야구</h1>
-        <spqn style={{ color: 'white'}}>{answer}</spqn>
-        <h1>{result}</h1>
-        <form onSubmit={onSubmitForm}>
-          <input
-            ref={inputEl}
-            maxLength={4}
-            value={value}
-            onChange={onChangeInput}
-          />
-          <button>입력!</button>
-        </form>
-        <div>시도: {tries.length}</div>
-        <ul>
-          {tries.map((v, i) => (
-            <Try key={`${i + 1}차 시도 : ${v.try}`} tryInfo={v}/>
-          ))}
-        </ul>
-      </>
-    );
-  };
-  
-  export default NumberBaseball;
+    },
+    [value, answer],
+  );
+
+  const onChangeInput = useCallback((e) => setValue(e.target.value), []);
+
+  return (
+    <>
+      <StsGnb></StsGnb>
+      {answer}
+      <h1>숫자야구</h1>
+      <spqn style={{ color: 'white' }}>{answer}</spqn>
+      <h1>{result}</h1>
+      <form onSubmit={onSubmitForm}>
+        <input
+          ref={inputEl}
+          maxLength={4}
+          value={value}
+          onChange={onChangeInput}
+        />
+        <button>입력!</button>
+      </form>
+      <div>시도: {tries.length}</div>
+      <ul>
+        {tries.map((v, i) => (
+          <Try key={`${i + 1}차 시도 : ${v.try}`} tryInfo={v} />
+        ))}
+      </ul>
+    </>
+  );
+};
+
+export default NumberBaseball;

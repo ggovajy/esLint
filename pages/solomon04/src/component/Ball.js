@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-const Ball = memo(({ number }) => {
+const Ball = ({ number }) => {
   let background;
   if (number <= 10) {
     background = 'red';
@@ -15,8 +15,10 @@ const Ball = memo(({ number }) => {
   }
 
   return (
-    <span className="ball" style={{ background }}>{number}</span>
-  )
-});
+    <span className="ball" style={{ background }}>
+      {number}
+    </span>
+  );
+};
 
-export default Ball;
+export default memo(Ball);

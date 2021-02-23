@@ -1,13 +1,23 @@
-import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
-import Ball from '../src/component/Ball'
-import StsGnb from '../src/component/stsGnb'
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+  useCallback,
+} from 'react';
+import Ball from '../src/component/Ball';
+import StsGnb from '../src/component/stsGnb';
 
 function getWinNumbers() {
   console.log('getWinNumbers');
-  const candidate = Array(45).fill().map((v, i) => i + 1);
+  const candidate = Array(45)
+    .fill()
+    .map((v, i) => i + 1);
   const shuffle = [];
   while (candidate.length > 0) {
-    shuffle.push(candidate.splice(Math.floor(Math.random() * candidate.length), 1)[0]);
+    shuffle.push(
+      candidate.splice(Math.floor(Math.random() * candidate.length), 1)[0],
+    );
   }
   const bonusNumber = shuffle[shuffle.length - 1];
   const winNumbers = shuffle.slice(0, 6).sort((p, c) => p - c);
@@ -57,10 +67,12 @@ const Lotto = () => {
 
   return (
     <>
-      <StsGnb></StsGnb>
+      <StsGnb />
       <div>당첨 숫자</div>
       <div id="결과창">
-        {winBalls.map((v) => <Ball key={v} number={v} />)}
+        {winBalls.map((v) => (
+          <Ball key={v} number={v} />
+        ))}
       </div>
       <div>보너스!</div>
       {bonus && <Ball number={bonus} onClick={onClickRedo} />}
