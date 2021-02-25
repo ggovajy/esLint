@@ -11,8 +11,8 @@ function Gnb() {
     activeItem = 'chart';
   } else if (router.pathname === '/about') {
     activeItem = 'about';
-  } else if (router.pathname === '/admin') {
-    activeItem = 'admin';
+  } else if (router.pathname === '/login') {
+    activeItem = 'login';
   } else if (router.pathname === '/solomon01') {
     activeItem = 'solomon01';
   } else if (router.pathname === '/solomon02') {
@@ -30,8 +30,8 @@ function Gnb() {
       router.push('/chart');
     } else if (data.name === 'about') {
       router.push('/about');
-    } else if (data.name === 'admin') {
-      router.push('/admin');
+    } else if (data.name === 'login') {
+      router.push('/login');
     } else if (data.name === 'solomon01') {
       router.push('/solomon01/solomon01');
     } else if (data.name === 'solomon02') {
@@ -52,17 +52,17 @@ function Gnb() {
         onClick={goLink}
       />
       <Menu.Item
-        name="Contact Us"
+        name="chart"
         active={activeItem === 'chart'}
         onClick={() => {
           router.push('/chart');
         }}
       />
       <Menu.Item
-        name="admin"
-        active={activeItem === 'admin'}
+        name="login"
+        active={activeItem === 'login'}
         onClick={() => {
-          router.push('/admin');
+          router.push('/login');
         }}
       />
       <Menu.Item
