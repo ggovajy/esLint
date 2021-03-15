@@ -1,84 +1,56 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useMemo,
-  useCallback,
-} from 'react';
-import Ball from '../src/component/Ball';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import StsGnb from '../src/component/stsGnb';
+import { Item, Table } from 'semantic-ui-react';
 
-function getWinNumbers() {
-  console.log('getWinNumbers');
-  const candidate = Array(45)
-    .fill()
-    .map((v, i) => i + 1);
-  const shuffle = [];
-  while (candidate.length > 0) {
-    shuffle.push(
-      candidate.splice(Math.floor(Math.random() * candidate.length), 1)[0],
-    );
-  }
-  const bonusNumber = shuffle[shuffle.length - 1];
-  const winNumbers = shuffle.slice(0, 6).sort((p, c) => p - c);
-  return [...winNumbers, bonusNumber];
+export default function about({ list }) {
+  return (
+    <div>
+      <StsGnb />
+
+      <Table fixed>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>ein</Table.HeaderCell>
+                <Table.HeaderCell>strein</Table.HeaderCell>
+                <Table.HeaderCell>name</Table.HeaderCell>
+                <Table.HeaderCell>sub_name</Table.HeaderCell>
+                {/* <Table.HeaderCell>city</Table.HeaderCell>
+                <Table.HeaderCell>state</Table.HeaderCell>
+                <Table.HeaderCell>ntee_code</Table.HeaderCell>
+                <Table.HeaderCell>raw_ntee_code</Table.HeaderCell> */}
+              </Table.Row>
+            </Table.Header>
+            {list.map((item) => (
+              <Table.Body key={item.ein}>
+                <Table.Row>
+                  <Table.Cell>{item.DONG_CD}</Table.Cell>
+                  <Table.Cell>{item.SIDO_NM}</Table.Cell>
+                  <Table.Cell>{item.SIGUNGU_NM}</Table.Cell>
+                  <Table.Cell>{item.EMD_NM}</Table.Cell>
+                  {/* <Table.Cell>{item.city}</Table.Cell>
+                  <Table.Cell>{item.state}</Table.Cell>
+                  <Table.Cell>{item.ntee_code}</Table.Cell>
+                  <Table.Cell>{item.raw_ntee_code}</Table.Cell> */}
+                </Table.Row>
+              </Table.Body>
+            ))}
+            </Table>
+    </div>
+  );
 }
 
-const Lotto = () => {
-  const lottoNumbers = useMemo(() => getWinNumbers(), []);
-  const [winNumbers, setWinNumbers] = useState(lottoNumbers);
-  const [winBalls, setWinBalls] = useState([]);
-  const [bonus, setBonus] = useState(null);
-  const [redo, setRedo] = useState(false);
-  const timeouts = useRef([]);
-
-  useEffect(() => {
-    console.log('useEffect');
-    for (let i = 0; i < winNumbers.length - 1; i++) {
-      timeouts.current[i] = setTimeout(() => {
-        setWinBalls((prevBalls) => [...prevBalls, winNumbers[i]]);
-      }, (i + 1) * 1000);
-    }
-    timeouts.current[6] = setTimeout(() => {
-      setBonus(winNumbers[6]);
-      setRedo(true);
-    }, 7000);
-    return () => {
-      timeouts.current.forEach((v) => {
-        clearTimeout(v);
-      });
-    };
-  }, [timeouts.current]); // 빈 배열이면 componentDidMount와 동일
-  // 배열에 요소가 있으면 componentDidMount랑 componentDidUpdate 둘 다 수행
-
-  useEffect(() => {
-    console.log('로또 숫자를 생성합니다.');
-  }, [winNumbers]);
-
-  const onClickRedo = useCallback(() => {
-    console.log('onClickRedo');
-    console.log(winNumbers);
-    setWinNumbers(getWinNumbers());
-    setWinBalls([]);
-    setBonus(null);
-    setRedo(false);
-    timeouts.current = [];
-  }, [winNumbers]);
-
-  return (
-    <>
-      <StsGnb />
-      <div>당첨 숫자</div>
-      <div id="결과창">
-        {winBalls.map((v) => (
-          <Ball key={v} number={v} />
-        ))}
-      </div>
-      <div>보너스!</div>
-      {bonus && <Ball number={bonus} onClick={onClickRedo} />}
-      {redo && <button onClick={onClickRedo}>한 번 더!</button>}
-    </>
-  );
-};
-
-export default Lotto;
+export async function getStaticProps(context) {
+  const API_URL = `http://localhost:3000/road-addr`;
+  const res = await axios.get(API_URL);
+  const { data } = res;
+  console.log(`data = ${data}`);
+  for (var key in data) {
+      console.log("key: " + key + " / " + data[key])
+  }
+  return {
+    props: {
+      list: data,
+    },
+  };
+}
